@@ -35,7 +35,7 @@ def popup_window(n1, c1, n2, c2):
     
     #Добавление окна вывода текста
     txtOutput = tk.Text(window, font = ('Courier New', 10, 'bold'))
-    txtOutput.place(x=15, y=115, width=470, height=300)
+    txtOutput.place(x=15, y=115, width=470, height=330)
     
     #ДОбавление заголовка
     txtOutput.insert(tk.END, '                          Контрольная      Тестовая' + os.linesep)
@@ -101,10 +101,10 @@ def popup_window(n1, c1, n2, c2):
     
     #Вычисление Z и P
     z_score = (p2-p1)/math.sqrt(sigma1*sigma1+sigma2*sigma2)
-    txtOutput.insert(tk.END, 'Z = ' + "{:.7f}".format(z_score) + os.linesep)
+    txtOutput.insert(tk.END, '                   Z = ' + "{:.7f}".format(z_score) + os.linesep)
     
     p_value = norm.sf(x=z_score, loc=0, scale=1)
-    txtOutput.insert(tk.END, 'P = ' + "{:.7f}".format(p_value) + os.linesep)
+    txtOutput.insert(tk.END, '                   P = ' + "{:.7f}".format(p_value) + os.linesep)
     
     #ДОбавление оценки результатов
     confidence_95 = False
@@ -115,29 +115,29 @@ def popup_window(n1, c1, n2, c2):
     if p_value < 0.005 or p_value > 0.995:
         confidence_99 = True
     
-    lblComment95 = tk.Label(window, text = "95% уверенность:", font = ('Helvetica', 10, 'bold'))
-    lblComment95.place(x=25, y=25)
+    lblComment95 = tk.Label(window, text = "95% уверенность:", font = ('Helvetica', 12, 'bold'))
+    lblComment95.place(x=145, y=25)
     
     if confidence_95:
         lblResult95 = tk.Label(window, text = "Да", font = ('Helvetica', 12, 'bold'), fg = '#008800')
-        lblResult95.place(x=160, y=25)
+        lblResult95.place(x=300, y=25)
     else:
         lblResult95 = tk.Label(window, text = "Нет", font = ('Helvetica', 12, 'bold'), fg = '#ff0000')
-        lblResult95.place(x=160, y=25)
+        lblResult95.place(x=300, y=25)
     
-    lblComment99 = tk.Label(window, text = "99% уверенность:", font = ('Helvetica', 10, 'bold'))
-    lblComment99.place(x=25, y=65)
+    lblComment99 = tk.Label(window, text = "99% уверенность:", font = ('Helvetica', 12, 'bold'))
+    lblComment99.place(x=145, y=65)
     
     if confidence_99:
         lblResult99 = tk.Label(window, text = "Да", font = ('Helvetica', 12, 'bold'), fg = '#008800')
-        lblResult99.place(x=160, y=65)
+        lblResult99.place(x=300, y=65)
     else:
         lblResult99 = tk.Label(window, text = "Нет", font = ('Helvetica', 12, 'bold'), fg = '#ff0000')
-        lblResult99.place(x=160, y=65)
+        lblResult99.place(x=300, y=65)
     
     #Кнопка закрытия окна
     btnClosePopup = tk.Button(window, text="Закрыть", font = ('Helvetica', 10, 'bold'), command=window.destroy)
-    btnClosePopup.place(x=190, y=450, width=90, height=30)
+    btnClosePopup.place(x=190, y=455, width=90, height=30)
     
     #Перевод фокуса на созданное окно
     window.focus_force()
